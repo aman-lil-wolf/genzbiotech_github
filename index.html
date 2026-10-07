@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GenZ Biotech Pharmaceutical | Innovation • Quality • Care</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;700;800&display=swap');
+        
+        :root { 
+            --primary-teal: #0d9488;
+            --dark-navy: #0f172a;
+        }
+
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            margin: 0;
+            /* Soft, icy premium light gradient background */
+            background: linear-gradient(135deg, #e0f2fe 0%, #f8fafc 50%, #ccfbf1 100%);
+            background-attachment: fixed;
+            color: var(--dark-navy); 
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        .Outfit { font-family: 'Outfit', sans-serif; }
+
+        /* Crystal Glassmorphism Utility Classes */
+        .crystal-glass {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.3) 100%);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 
+                0 8px 32px 0 rgba(31, 38, 135, 0.05),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.5); /* Inner glossy reflection */
+        }
+        
+        .crystal-card {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.4) 100%);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Glossy shine element inside cards */
+        .crystal-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 50%; height: 100%;
+            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.6) 50%, rgba(255,255,255,0) 100%);
+            transform: skewX(-25deg);
+            transition: all 0.7s ease;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .crystal-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px -10px rgba(13, 148, 136, 0.15);
+            border-color: #5eead4;
+        }
+        
+        .crystal-card:hover::before {
+            left: 200%;
+        }
+
+        /* Text Gradients */
+        .teal-grad-text { 
+            background: linear-gradient(135deg, #0f766e 0%, #0d9488 100%);
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+        }
+        
+        .navy-grad-text {
+            background: linear-gradient(135deg, #020617 0%, #1e293b 100%);
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+        }
+
+        /* Sidebar Styling */
+        #sidebar {
+            position: fixed; top: 0; left: -320px; width: min(320px, 80%); height: 100%;
+            background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px);
+            z-index: 10001; transition: 0.4s ease;
+            border-right: 1px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 20px 0 50px rgba(0,0,0,0.1);
+        }
+        #sidebar.active { left: 0; }
+        .close-btn { position: absolute; top: 24px; right: 24px; cursor: pointer; color: var(--primary-teal); font-size: 1.5rem; transition: transform 0.3s; }
+        .close-btn:hover { transform: rotate(90deg); }
+
+        .nav-header { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; padding: 16px 5%; display: flex; align-items: center; justify-content: flex-start; gap: 24px; background: rgba(255,255,255,0.6); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,255,255,0.5); box-shadow: 0 4px 30px rgba(0,0,0,0.03); }
+        .menu-btn { cursor: pointer; color: var(--primary-teal); font-size: clamp(1.5rem, 3vw, 2rem); transition: color 0.3s; }
+        .menu-btn:hover { color: var(--dark-navy); }
+        .logo-text { font-weight: 800; font-size: clamp(1.2rem, 3vw, 1.8rem); letter-spacing: -0.5px; }
+
+        .hero-title { font-size: clamp(3.5rem, 10vw, 8rem); line-height: 0.95; margin-top: 10px; }
+        
+        /* Decorative Background Elements */
+        .bg-shape { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.4; z-index: -1; pointer-events: none; }
+    </style>
+</head>
+<body class="antialiased selection:bg-teal-200 selection:text-teal-900">
+
+    <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
+        <div class="bg-shape bg-teal-300 w-[50vw] h-[50vw] -top-[10%] -left-[10%]"></div>
+        <div class="bg-shape bg-blue-200 w-[40vw] h-[40vw] top-[20%] -right-[10%]"></div>
+        <div class="bg-shape bg-cyan-200 w-[60vw] h-[60vw] -bottom-[20%] left-[20%]"></div>
+    </div>
+
+    <!-- MAIN CONTENT WRAPPER -->
+    <div class="relative z-10">
+
+        <header class="nav-header">
+            <div class="menu-btn" onclick="toggleMenu()"><i class="fa-solid fa-bars-staggered"></i></div>
+            <div class="logo-text Outfit navy-grad-text uppercase tracking-tight">GenZ BIOTECH</div>
+        </header>
+
+        <div id="sidebar">
+            <div class="close-btn" onclick="toggleMenu()"><i class="fa-solid fa-xmark"></i></div>
+            <div class="p-8 mt-4 border-b border-slate-200 font-extrabold teal-grad-text uppercase tracking-widest text-sm text-center">GenZ Biotech</div>
+            <nav class="mt-6 flex flex-col gap-2 px-4">
+                <a href="#home" class="p-4 px-6 rounded-xl text-sm font-bold uppercase tracking-widest text-slate-600 hover:text-teal-700 hover:bg-teal-50 transition-all" onclick="toggleMenu()">Home</a>
+                <a href="#story" class="p-4 px-6 rounded-xl text-sm font-bold uppercase tracking-widest text-slate-600 hover:text-teal-700 hover:bg-teal-50 transition-all" onclick="toggleMenu()">Our Story</a>
+                <a href="#about" class="p-4 px-6 rounded-xl text-sm font-bold uppercase tracking-widest text-slate-600 hover:text-teal-700 hover:bg-teal-50 transition-all" onclick="toggleMenu()">About Us</a>
+                <a href="#portfolio" class="p-4 px-6 rounded-xl text-sm font-bold uppercase tracking-widest text-slate-600 hover:text-teal-700 hover:bg-teal-50 transition-all" onclick="toggleMenu()">Portfolio</a>
+                <a href="#contact" class="p-4 px-6 rounded-xl text-sm font-bold uppercase tracking-widest text-slate-600 hover:text-teal-700 hover:bg-teal-50 transition-all" onclick="toggleMenu()">Contact</a>
+            </nav>
+        </div>
+
+        <section id="home" class="min-h-screen pt-32 pb-20 px-6 flex items-center relative">
+            <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 lg:gap-20 items-center w-full relative z-10">
+                <div>
+                    <div class="inline-block px-5 py-2 mb-6 rounded-full crystal-glass shadow-sm border border-white">
+                        <p class="teal-grad-text font-bold text-xs md:text-sm uppercase tracking-[0.3em]">Innovation • Quality • Care</p>
+                    </div>
+                    <h2 class="hero-title Outfit font-extrabold text-slate-900 tracking-tighter uppercase mb-8">
+                        Pure <br><span class="teal-grad-text">Science.</span>
+                    </h2>
+                    <p class="text-slate-600 text-lg md:text-2xl leading-relaxed max-w-xl mb-10 font-medium">
+                        Welcome to <span class="font-bold text-slate-800">GenZ Biotech Pharmaceutical</span>, a trusted global healthcare partner providing high-quality pharmaceutical products and surgical solutions.
+                    </p>
+                    <a href="#portfolio" class="inline-flex items-center gap-3 px-8 py-4 crystal-card text-teal-800 hover:text-teal-900 uppercase tracking-widest font-bold transition-all rounded-full text-sm">
+                        Explore Products <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+                <div class="relative w-full">
+                    <!-- Shiny glass framing for the hero image -->
+                    <div class="crystal-glass p-3 md:p-5 rounded-3xl relative group">
+                        <!-- Extra gloss reflection on the image container -->
+                        <div class="absolute inset-0 bg-gradient-to-tr from-white/40 to-transparent rounded-3xl pointer-events-none"></div>
+                        <img src="Doctors.png" class="rounded-2xl w-full h-auto object-cover relative z-10 shadow-lg" alt="Pharma Tech Doctors">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="story" class="py-32 px-6 relative">
+            <div class="max-w-5xl mx-auto crystal-glass p-10 md:p-20 rounded-[2.5rem] text-center relative z-10">
+                <h3 class="Outfit text-3xl md:text-5xl font-extrabold mb-10 uppercase tracking-widest teal-grad-text">Our Story</h3>
+                <p class="text-slate-700 text-xl md:text-3xl italic leading-relaxed font-medium">
+                    "GenZ Biotech Pharmaceutical was established after a deeply personal experience that highlighted the importance of timely access to quality healthcare..."
+                </p>
+                <div class="mt-10 w-24 h-1 bg-teal-500/30 mx-auto rounded-full"></div>
+            </div>
+        </section>
+
+        <section id="about" class="py-32 px-6">
+            <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
+                <div>
+                    <h3 class="Outfit text-5xl md:text-7xl font-extrabold mb-10 navy-grad-text uppercase tracking-tighter">About Us</h3>
+                    <p class="text-slate-600 text-lg md:text-xl leading-relaxed mb-12 font-medium">
+                        At GenZ Biotech Pharmaceutical, we believe better healthcare begins with better products. Established by doctors and healthcare specialists, our deep understanding of clinical requirements drives everything we do.
+                    </p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 text-sm font-bold text-slate-700 uppercase tracking-widest">
+                        <div class="flex items-center gap-4 crystal-card p-4 rounded-xl"><i class="fa-solid fa-circle-check text-teal-600 text-xl z-10 relative"></i> <span class="z-10 relative">Quality Manufacturing</span></div>
+                        <div class="flex items-center gap-4 crystal-card p-4 rounded-xl"><i class="fa-solid fa-circle-check text-teal-600 text-xl z-10 relative"></i> <span class="z-10 relative">Ethical Distribution</span></div>
+                        <div class="flex items-center gap-4 crystal-card p-4 rounded-xl"><i class="fa-solid fa-circle-check text-teal-600 text-xl z-10 relative"></i> <span class="z-10 relative">Customer-Centric</span></div>
+                        <div class="flex items-center gap-4 crystal-card p-4 rounded-xl"><i class="fa-solid fa-circle-check text-teal-600 text-xl z-10 relative"></i> <span class="z-10 relative">Affordable Solutions</span></div>
+                    </div>
+                </div>
+                <div>
+                    <div class="crystal-glass p-10 md:p-16 rounded-3xl border-l-4 border-l-teal-500 relative overflow-hidden">
+                        <!-- Decorative quote icon -->
+                        <i class="fa-solid fa-quote-right absolute -bottom-4 -right-4 text-9xl text-teal-900/5"></i>
+                        <h3 class="Outfit text-3xl font-bold mb-6 uppercase teal-grad-text relative z-10">Founder’s Message</h3>
+                        <p class="text-slate-700 italic text-lg md:text-xl mb-10 leading-relaxed font-medium relative z-10">
+                            "Our vision is to build a healthcare organization defined by quality, integrity, and long-term impact. Guided by medical expertise, we are dedicated to supporting providers with products they can trust."
+                        </p>
+                        <p class="text-xs uppercase tracking-[0.3em] text-teal-700 text-right font-extrabold relative z-10">— Founder, GenZ Biotech</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="portfolio" class="py-32 px-6 relative">
+            <div class="max-w-7xl mx-auto relative z-10">
+                <div class="text-center mb-24">
+                    <h3 class="Outfit text-5xl md:text-8xl navy-grad-text font-extrabold uppercase tracking-tighter drop-shadow-sm">Product Portfolio</h3>
+                    <p class="mt-6 text-teal-700 font-extrabold tracking-[0.3em] uppercase text-sm">Excellence in every category</p>
+                </div>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Card 1 -->
+                    <div class="crystal-card rounded-2xl p-4 group flex flex-col h-full cursor-pointer">
+                        <div class="overflow-hidden rounded-xl mb-6 relative z-10 bg-white">
+                            <img src="surgical.png" class="w-full h-56 object-cover transform group-hover:scale-105 transition-transform duration-500" alt="Surgical">
+                        </div>
+                        <h4 class="Outfit text-2xl font-bold mb-2 uppercase text-slate-800 relative z-10">Surgical</h4>
+                        <p class="text-xs uppercase font-extrabold tracking-widest text-teal-700 mt-auto relative z-10">Instruments & Dressing</p>
+                    </div>
+                    
+                    <!-- Card 2 -->
+                    <div class="crystal-card rounded-2xl p-4 group flex flex-col h-full cursor-pointer">
+                        <div class="overflow-hidden rounded-xl mb-6 relative z-10 bg-white">
+                            <img src="capsules.png" class="w-full h-56 object-cover transform group-hover:scale-105 transition-transform duration-500" alt="Pharma">
+                        </div>
+                        <h4 class="Outfit text-2xl font-bold mb-2 uppercase text-slate-800 relative z-10">Pharma</h4>
+                        <p class="text-xs uppercase font-extrabold tracking-widest text-teal-700 mt-auto relative z-10">Injectables & Meds</p>
+                    </div>
+                    
+                    <!-- Card 3 -->
+                    <div class="crystal-card rounded-2xl p-4 group flex flex-col h-full cursor-pointer">
+                        <div class="overflow-hidden rounded-xl mb-6 relative z-10 bg-white">
+                            <img src="Herbs.png" class="w-full h-56 object-cover transform group-hover:scale-105 transition-transform duration-500" alt="Herbal">
+                        </div>
+                        <h4 class="Outfit text-2xl font-bold mb-2 uppercase text-slate-800 relative z-10">Herbal</h4>
+                        <p class="text-xs uppercase font-extrabold tracking-widest text-teal-700 mt-auto relative z-10">Wellness Solutions</p>
+                    </div>
+                    
+                    <!-- Card 4 -->
+                    <div class="crystal-card rounded-2xl p-4 group flex flex-col h-full cursor-pointer">
+                        <div class="overflow-hidden rounded-xl mb-6 relative z-10 bg-white">
+                            <img src="shilajit.png" class="w-full h-56 object-cover transform group-hover:scale-105 transition-transform duration-500" alt="Shilajit">
+                        </div>
+                        <h4 class="Outfit text-2xl font-bold mb-2 uppercase text-slate-800 relative z-10">Pure Shilajit</h4>
+                        <p class="text-xs uppercase font-extrabold tracking-widest text-teal-700 mt-auto relative z-10">Vitality Booster</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer id="contact" class="py-32 px-6 relative border-t border-white/60 mt-10">
+            <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20">
+                <div class="space-y-12">
+                    <h3 class="Outfit text-6xl md:text-8xl navy-grad-text uppercase font-extrabold tracking-tighter drop-shadow-sm">Contact</h3>
+                    <div class="space-y-8">
+                        <div class="crystal-card p-6 rounded-2xl">
+                            <p class="text-xs uppercase tracking-[0.4em] text-teal-700 mb-3 font-extrabold relative z-10">Corporate Office</p>
+                            <p class="text-xl md:text-2xl font-bold text-slate-800 relative z-10">Sector-45, Faridabad, Haryana, India</p>
+                        </div>
+                        <div class="crystal-card p-6 rounded-2xl">
+                            <p class="text-xs uppercase tracking-[0.4em] text-teal-700 mb-3 font-extrabold relative z-10">Email Support</p>
+                            <!-- Updated Email Here -->
+                            <a href="mailto:info@genzbiotech.com" class="text-xl md:text-2xl font-bold text-slate-800 hover:text-teal-600 transition-colors inline-flex items-center gap-3 relative z-10">
+                                <i class="fa-regular fa-envelope"></i> info@genzbiotech.com
+                            </a>
+                        </div>
+                        <div class="crystal-card p-6 rounded-2xl">
+                            <p class="text-xs uppercase tracking-[0.4em] text-teal-700 mb-3 font-extrabold relative z-10">Direct Line</p>
+                            <a href="tel:+919599663315" class="text-2xl md:text-4xl font-bold text-slate-800 hover:text-teal-600 transition-colors relative z-10">
+                                +91-9599663315
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="h-full">
+                    <div class="crystal-glass p-12 md:p-20 rounded-[2.5rem] h-full flex flex-col justify-center text-center">
+                        <div class="inline-flex justify-center items-center mx-auto mb-8 w-20 h-20 bg-white/60 shadow-inner rounded-full border border-white">
+                            <i class="fa-solid fa-earth-americas text-4xl text-teal-600"></i>
+                        </div>
+                        <h4 class="Outfit text-2xl font-bold mb-6 uppercase text-teal-700 tracking-widest">Global Markets</h4>
+                        <div class="text-5xl md:text-7xl font-extrabold mb-8 text-slate-900 uppercase tracking-tighter">Africa & Asia</div>
+                        <p class="text-slate-600 text-lg md:text-xl italic font-medium">"Ensuring dependable medical products reach providers worldwide with unmatched quality and precision."</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-32 text-[10px] tracking-[0.8em] uppercase font-bold text-slate-400 border-t border-white/50 pt-10">
+                © 2026 GenZ Biotech Pharmaceutical Pvt. Ltd.
+            </div>
+        </footer>
+
+    </div>
+
+    <script>
+        // Simple Sidebar toggle functionality
+        function toggleMenu() { 
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('active'); 
+        }
+    </script>
+</body>
+</html>
